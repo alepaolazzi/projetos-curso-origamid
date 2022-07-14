@@ -45,12 +45,12 @@ body {
   display: flex;
   flex-wrap: wrap;
   padding: 10px;
+  gap: 10px;
 }
 
 .menu li a {
   display: block;
   padding: 10px 10px;
-  gap: 10px;
   font-family: "IBM Plex Mono", monospace;
   font-weight: bold;
   text-transform: uppercase;
@@ -212,6 +212,9 @@ body {
   .menu ul {
     justify-content: center;
   }
+  .menu li a {
+    background-color: rgb(249, 171, 53);
+  }
   .grid-section {
     grid-template-columns: 100px 1fr;
     gap: 10px;
@@ -285,4 +288,15 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.js .js-scroll {
+  opacity: 0;
+  transform: translate3d(-30px, 0, 0);
+  transition: 0.3s;
+}
+
+.js .js-scroll.ativo {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
 }
