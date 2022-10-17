@@ -30,6 +30,9 @@ body {
   background: #faf6ed;
   color: #222;
   -webkit-font-smoothing: antialiased;
+}
+
+.grid-container {
   display: grid;
   grid-template-columns: 1fr 120px minmax(300px, 800px) 1fr;
 }
@@ -58,9 +61,18 @@ body {
   letter-spacing: 0.1em;
 }
 
+.menu li:last-child a {
+  color: #e54;
+}
+
 .menu li a:hover {
   transform: translateY(-2px);
   color: #e54;
+}
+
+.menu li:last-child a:hover {
+  transform: translateY(-2px);
+  color: #faf6ed;
 }
 
 .grid-section {
@@ -201,7 +213,7 @@ body {
 }
 
 @media (max-width: 700px) {
-  body {
+  .grid-container {
     grid-template-columns: 1fr;
   }
   .menu,
@@ -238,16 +250,26 @@ body {
   }
 }
 
-.js .js-tabcontent section {
+.js [data-tab="content"] section {
   display: none;
 }
 
-.js .js-tabcontent section.ativo {
+[data-tab="content"] section.ativo {
   display: block !important;
-  animation: show 0.5s forwards; /* deixa no estado final */
+  animation: show-right 0.5s forwards; /* deixa no estado final */
 }
 
-@keyframes show {
+[data-tab="content"] section.ativo.show-down {
+  display: block !important;
+  animation: show-down 0.5s forwards; /* deixa no estado final */
+}
+
+[data-tab="content"] section.ativo.show-right {
+  display: block !important;
+  animation: show-right 0.5s forwards; /* deixa no estado final */
+}
+
+@keyframes show-right {
   from {
     opacity: 0;
     transform: translate3d(-30px, 0, 0);
@@ -258,24 +280,35 @@ body {
   }
 }
 
-.js .js-accordion dd {
+@keyframes show-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.js [data-anime="accordion"] dd {
   display: none;
 }
 
-.js-accordion dt:hover {
+[data-anime="accordion"] dt:hover {
   cursor: pointer;
 }
 
-.js-accordion dt::after {
+[data-anime="accordion"] dt::after {
   content: "⮟";
   margin-left: 10px;
 }
 
-.js-accordion dt.ativo::after {
+[data-anime="accordion"] dt.ativo::after {
   content: "⮝";
 }
 
-.js-accordion dd.ativo {
+[data-anime="accordion"] dd.ativo {
   display: block;
   animation: slideDown 0.5s forwards;
 }
@@ -290,13 +323,13 @@ body {
   }
 }
 
-.js .js-scroll {
+.js [data-anime="scroll"] {
   opacity: 0;
   transform: translate3d(-30px, 0, 0);
   transition: 0.3s;
 }
 
-.js .js-scroll.ativo {
+.js [data-anime="scroll"].ativo {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
