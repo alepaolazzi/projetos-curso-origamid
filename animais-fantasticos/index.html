@@ -18,12 +18,22 @@
 <body>
   <div class="grid-container">
     <nav class="menu" data-menu='suave'>
-      <ul>
+      <button data-menu="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul data-menu="list" id="menu">
         <li><a href="#animais">Animais</a></li>
+        <li data-dropdown>
+          <a href="/">Sobre</a>
+          <ul class="dropdown-menu">
+            <li><a href="/">A Empresa</a></li>
+            <li><a href="/">Equipe</a></li>
+            <li><a href="/">Sócios</a></li>
+            <li><a href="/" class="investidores">Investidores</a></li>
+          </ul>
+        </li>
         <li><a href="#faq">Faq</a></li>
         <li><a href="#contato">Contato</a></li>
-        <li><a href="http">Dev→</a></li>
-        <li><a href="login.html" data-modal="abrir">Login</a></li>
+        <li><a href="/">Dev→</a></li>
+        <li><a href="/" data-modal="abrir">Login</a></li>
       </ul>
     </nav>
     <section class="grid-section animais" data-anime="scroll" id="animais">
@@ -102,9 +112,16 @@
       </dl>
     </section>
 
+    <section class="grid-section numeros" data-anime="scroll">
+      <h1 class="titulo">Números</h1>
+      <div class="numeros-grid">
+
+      </div>
+    </section>
+
     <section class="grid-section contato" data-anime="scroll" id="contato">
       <h1 class="titulo">Contato</h1>
-      <div class="mapa">
+      <div class="mapa" data-tooltip aria-label="Endereço próximo ao estacionamento">
         <img src="./img/mapa.png" alt="mapaRJ">
       </div>
       <ul class="dados">
@@ -112,6 +129,8 @@
         <li>+55 (21) 9999-9999</li>
         <li>Rua do Conde, nº 21</li>
         <li>Rio de Janeiro - RJ</li>
+        <li>Doe <span class="btc-preco">0</span> bitcoin para nos ajudar</li>
+        <li data-semana="1,2,3,4,5" data-horario="8, 18">Seg à Sex das 8h às 18h</li>
       </ul>
     </section>
 

@@ -61,7 +61,7 @@ body {
   letter-spacing: 0.1em;
 }
 
-.menu li:last-child a {
+.menu li:last-child a:not(.investidores) {
   color: #e54;
 }
 
@@ -224,9 +224,7 @@ body {
   .menu ul {
     justify-content: center;
   }
-  .menu li a {
-    background-color: rgb(249, 171, 53);
-  }
+
   .grid-section {
     grid-template-columns: 100px 1fr;
     gap: 10px;
@@ -332,4 +330,26 @@ body {
 .js [data-anime="scroll"].ativo {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+
+.js [data-semana]::after {
+  display: inline-block;
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #e54;
+  border-radius: 50%;
+  margin-left: 4px;
+  border: 2px solid #000;
+}
+
+.js [data-semana].aberto::after {
+  background-color: #3f4;
+}
+
+.js .btc-preco {
+  background-color: #3f4;
+  padding: 0.2rem 0.5rem;
+  font-weight: 700;
+  border-radius: 2px;
 }
