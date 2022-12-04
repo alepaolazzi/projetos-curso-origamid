@@ -1,26 +1,33 @@
-export default function initTabNav() {
-  const tabMenu = document.querySelectorAll("[data-tab='menu'] li"); // seleciona todos li;
-  const tabContent = document.querySelectorAll("[data-tab='content'] section"); // seleciona todas section;
-
-  // funcão que adiciona classe ativo para um e remove dos outros;
-  function activeTab(i) {
-    tabContent.forEach((section) => {
-      section.classList.remove('ativo');
-    });
-    const direcao = tabContent[i].dataset.anime;
-    tabContent[i].classList.add('ativo', direcao);
+export default class initTabNav {
+  constructor(menu, content) {
+    this.tabMenu = document.querySelectorAll(menu);
+    this.tabContent = document.querySelectorAll(content);
+    this.activeClass = 'ativo';
   }
 
-  // verifica se os elementos existem;
-  if (tabMenu.length && tabContent.length) {
-    tabContent[0].classList.add('ativo'); // adiciona a classe ativo para o primeiro li;
+  // funcão que adiciona classe ativo para um e remove dos outros;
+  activeTab(i) {
+    this.tabContent.forEach((section) => {
+      section.classList.remove(this.activeClass);
+    });
+    const direcao = this.tabContent[i].dataset.anime;
+    this.tabContent[i].classList.add(this.activeClass, direcao);
+  }
 
-    // função seleciona cada li e add o evento que quando clicado ativa a função;
-
-    tabMenu.forEach((liItem, i) => {
+  // adiciona os eventos nas tabs
+  addTabNavEvent() {
+    this.tabMenu.forEach((liItem, i) => {
       liItem.addEventListener('click', () => {
-        activeTab(i);
+        this.activeTab(i);
       });
     });
+  }
+
+  init() {
+    if (this.tabMenu.length && this.tabContent.length) {
+      // ativar primeiro item
+      this.activeTab(0);
+      this.addTabNavEvent();
+    }
   }
 }
