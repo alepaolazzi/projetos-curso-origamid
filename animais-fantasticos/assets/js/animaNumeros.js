@@ -1,11 +1,9 @@
 export default function initAnimaNumeros() {
   function animaNumeros() {
-    const numeros = document.querySelectorAll("[data-numero]");
-
+    const numeros = document.querySelectorAll('[data-numero]');
     numeros.forEach((num) => {
       const total = +num.innerText;
       const incremento = Math.floor(total / 100);
-
       let start = 0;
       const timer = setInterval(() => {
         start += incremento;
@@ -18,20 +16,21 @@ export default function initAnimaNumeros() {
     });
   }
 
-  // função callback que será executada com parametro especial com 'observação' em formato array like;
+  let observador;
+  // função callback será executada com parametro especial com 'observação' em formato array like;
   function handleMutation(mutacao) {
-    // pega o primeiro parametro do elemento atual, verifica se contem ativo, caso sim inicia a função da contagem
-    if (mutacao[0].target.classList.contains("ativo")) {
-      //após verificação para de observar
+    // pega o 1º parametro do elemento atual, verifica se ativo caso sim inicia a função de contagem
+    if (mutacao[0].target.classList.contains('ativo')) {
+      // após verificação para de observar
       observador.disconnect();
       animaNumeros();
     }
   }
 
   // elemento que será observado
-  const observadorAlvo = document.querySelector(".numeros");
+  const observadorAlvo = document.querySelector('.numeros');
   // observará se houver alguma mudança nos atributos
-  const observador = new MutationObserver(handleMutation);
+  observador = new MutationObserver(handleMutation);
 
   // argumentos: alvo, o que observar
   observador.observe(observadorAlvo, { attributes: true });
