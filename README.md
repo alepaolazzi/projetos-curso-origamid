@@ -16,7 +16,9 @@ Para a criptografia, foi utilizado as seguintes chaves:
 
 > ✅ Wildbeast realizado durante o curso sobre `CSS Grid Layout`
 
-> 🚧 Animais Fantásticos está sendo realizado durante o curso sobre `Javascript Completo`
+> 🚧 Animais Fantásticos está sendo realizado durante o curso `Javascript Completo`
+
+> 🚧 Slide Animais está sendo realizado durante o curso `Javascript Completo`
 
 ## 🛠 Tecnologias e Ferramentas Utilizadas
 
